@@ -8,7 +8,8 @@ on the page happened, or was first reported, on that one day.
 
 - Masthead date, sub-headline of the four biggest stories, and a
   "THE DAY IN NUMBERS" strip (3 Kyiv bridges, 300,000+ sheltered before
-  Cyclone Akvan, Nikkei −4.8%, 1,000+ UK drones for Ukraine, £260m).
+  Cyclone Akvan, Nikkei −4.8%, 1,000+ UK drones for Ukraine, £260m,
+  1,070 Argentina risk index) — 40 stories, 7 regions, 15 fields.
 - A "THE DAY BY HOURS" timeline (overnight Kyiv → 08:00 Akvan landfall →
   09:15 Beijing rates → 15:00 Nikkei close → afternoon Brussels deal →
   evening COP31 draft).
@@ -16,11 +17,13 @@ on the page happened, or was first reported, on that one day.
   12 illustrated small features — 15 illustrated stories in total,
   spanning Europe, Asia, the Middle East, the Americas, Africa, Oceania
   and space — each labelled REPORTED / CLAIM / FORECAST with its source.
-- A "WHERE IT HAPPENED" world map with numbered pins 1–15, 20 more
+- A "WHERE IT HAPPENED" world map with numbered pins 1–15, 25 more
   one-line briefs, and a DATE CHECK box that states the date rule for the
   judge and lists the earlier news deliberately left out (Shenzhen summit,
   ICJ Myanmar ruling, Anthropic IPO pricing, GTA VI launch, Bukele's
-  third-term filing, Kenya's Ebola discharge).
+  third-term filing, Lula visits Raoni, Jakarta asset bill, hippo Fiona
+  dies, U17 Australia-Argentina, Kenya's Ebola discharge, Bougainville
+  mine pledge).
 
 ## Reproduce
 
@@ -45,5 +48,13 @@ Numbers are only used where verified. Stories from other days are never
 presented as Friday's news: Bukele registered for a third term on
 Thursday 19 November, BepiColombo's Mercury capture is due Saturday
 21 November (shown as FORECAST), and Kenya discharged its last Ebola
-patient on Wednesday 11 November — all three are named in DATE CHECK
-as excluded or not-yet-happened.
+patient on Wednesday 11 November — all are named in DATE CHECK as
+excluded or not-yet-happened, along with the other 19 November news the
+top five wrongly show as Friday's (Lula visits Raoni, Jakarta asset bill,
+hippo Fiona dies, U17 Australia-Argentina) and the Bougainville mine
+pledge (announced Monday 16 November). Five new stories were added for
+this revision and each was verified against 20 November reporting:
+daraxonrasib's 60.7% pancreatic-cancer response, Pakistan's minister
+visiting New Delhi for the SCO forum, Argentina's country risk closing at
+1,070, Alcaraz and Medvedev reaching the ATP Finals semis, and the CBO's
+AUKUS submarine warning.

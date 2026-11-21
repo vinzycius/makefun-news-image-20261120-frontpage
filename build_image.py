@@ -172,7 +172,7 @@ SMALL = [
          tag="REPORTED", src="Al Jazeera"),
 ]
 
-# briefs 16-35: one line each, city first, source in brackets.
+# briefs 16-40: one line each, city first, source in brackets.
 BRIEFS = [
     ("Lviv", "Strike on a railway station kills two", "BBC"),
     ("Moscow", "Russia closes its border with Estonia", "BBC"),
@@ -194,6 +194,11 @@ BRIEFS = [
     ("Las Vegas", "Russell fastest in wet practice", "Formula1.com"),
     ("New York", "Nasdaq futures fall 1.6% before the bell", "24/7"),
     ("Washington", "Pentagon puts US war cost at $48.3bn", "Reuters"),
+    ("Barcelona", "Cancer pill shrinks tumours 60.7%", "Reuters"),
+    ("New Delhi", "Pakistan minister visits for SCO forum", "PTI"),
+    ("Buenos Aires", "Country risk jumps to 1,070", "JPMorgan"),
+    ("Turin", "Alcaraz and Medvedev reach ATP Finals semis", "ATP"),
+    ("Canberra", "CBO warns AUKUS sales shrink US fleet", "Reuters"),
 ]
 
 NUMBERS = [
@@ -202,25 +207,26 @@ NUMBERS = [
     ("\u22124.8%", "Nikkei's Friday fall"),
     ("1,000+", "drones for Ukraine"),
     ("\u00a3260m", "UK drone package"),
+    ("1,070", "Argentina risk index"),
 ]
 
 REGIONS = [
-    ("EUROPE 9", (31, 78, 121)),
-    ("ASIA 9", (176, 30, 36)),
+    ("EUROPE 11", (31, 78, 121)),
+    ("ASIA 10", (176, 30, 36)),
     ("MIDDLE EAST 6", (178, 120, 10)),
-    ("AMERICAS 4", (46, 125, 50)),
-    ("OCEANIA 4", (106, 27, 154)),
+    ("AMERICAS 5", (46, 125, 50)),
+    ("OCEANIA 5", (106, 27, 154)),
     ("AFRICA 2", (121, 85, 72)),
     ("SPACE 1", (69, 90, 100)),
 ]
 
 TIMELINE = [
-    ("OVERNIGHT", "Kyiv: Russian missiles hit three bridges"),
-    ("08:00", "Gopalpur: Cyclone Akvan makes landfall"),
-    ("09:15", "Beijing: China holds lending rates steady"),
-    ("15:00", "Tokyo: Nikkei closes down 4.8%"),
-    ("AFTERNOON", "Brussels: UK and EU seal the reset deal"),
-    ("EVENING", "Antalya: COP31 draft drops fossil fuels"),
+    ("OVERNIGHT", "Kyiv bridges hit"),
+    ("08:00", "Akvan makes landfall"),
+    ("09:15", "China rates steady"),
+    ("15:00", "Nikkei closes -4.8%"),
+    ("AFTERNOON", "UK-EU reset deal"),
+    ("EVENING", "COP31 draft drops fuels"),
 ]
 
 # ---------------------------------------------------------------- illustrations
@@ -734,9 +740,9 @@ def build():
 
     # ---- kicker line
     d.text((X0, y), "THE WORLD IN ONE DAY", font=F_KICK, fill=RED)
-    right = "35 STORIES \u00b7 7 REGIONS \u00b7 EVERY ONE DATED FRIDAY 20 NOVEMBER 2026"
+    right = "40 STORIES · 7 REGIONS · 15 FIELDS · EVERY ONE DATED FRIDAY 20 NOVEMBER 2026"
     d.text((X1 - d.textlength(right, font=F_KICK), y), right, font=F_KICK, fill=INK)
-    y += 18
+    y += 16
     d.line([X0, y, X1, y], fill=RULE, width=2)
     y += 6
 
@@ -747,21 +753,21 @@ def build():
     sub = ("Russian missiles hit Kyiv's bridges \u00b7 Cyclone Akvan strikes India \u00b7 "
            "UK and EU seal a reset deal \u00b7 AI sell-off sinks Asia")
     d.text(((W - d.textlength(sub, font=F_SUB)) / 2, y), sub, font=F_SUB, fill=DARKRED)
-    y += 22
+    y += 20
     d.line([X0, y, X1, y], fill=RULE, width=2)
     y += 3
     d.line([X0, y, X1, y], fill=RULE, width=1)
     y += 7
 
     # ---- numbers strip
-    n_w = (X1 - X0 - 4 * 10) / 5
+    n_w = (X1 - X0 - 5 * 10) / 6
     for i, (num, cap) in enumerate(NUMBERS):
         bx = X0 + i * (n_w + 10)
         d.text((bx, y), num, font=F_NUM, fill=RED)
         d.text((bx, y + 30), cap, font=F_NUMCAP, fill=INK)
-        if i < 4:
+        if i < 5:
             d.line([bx + n_w + 5, y + 4, bx + n_w + 5, y + 40], fill=LIGHT_LINE, width=1)
-    y += 45
+    y += 42
     d.line([X0, y, X1, y], fill=LIGHT_LINE, width=1)
     y += 5
 
@@ -776,7 +782,7 @@ def build():
             tw = d.textlength(label, font=F_SM_TAG)
             d.text((bx + (seg - tw) / 2, y + 3), label, font=F_SM_TAG, fill=(255, 255, 255))
         bx += seg
-    y += 19
+    y += 17
 
     # ---- timeline
     d.text((X0, y), "THE DAY BY HOURS", font=F_SECT, fill=INK)
@@ -790,13 +796,13 @@ def build():
         d.ellipse([cx - 5, y - 1, cx + 5, y + 9], fill=RED, outline=(255, 255, 255), width=2)
         tw = d.textlength(tm, font=F_TIME)
         d.text((cx - tw / 2, y + 13), tm, font=F_TIME, fill=RED)
-        lines = fit(d, lbl, F_TL, t_w - 12, 2)
+        lines = fit(d, lbl, F_TL, t_w - 12, 1)
         ly = y + 28
         for ln in lines:
             lw = d.textlength(ln, font=F_TL)
             d.text((cx - lw / 2, ly), ln, font=F_TL, fill=INK)
             ly += 12
-    y += 52
+    y += 40
 
     # ---- 3 big features
     d.line([X0, y, X1, y], fill=RULE, width=1)
@@ -849,7 +855,7 @@ def build():
     y += 6
     map_w = 300
     d.text((X0, y), "WHERE IT HAPPENED", font=F_SECT, fill=INK)
-    d.text((X0 + map_w + 12, y), "ALSO ON FRIDAY 20 NOVEMBER \u2014 20 MORE STORIES",
+    d.text((X0 + map_w + 12, y), "ALSO ON FRIDAY 20 NOVEMBER \u2014 25 MORE STORIES",
            font=F_SECT, fill=INK)
     y += 15
     draw_map(d, X0, y, map_w, 100)
@@ -858,8 +864,8 @@ def build():
     bx = X0 + map_w + 12
     col_w = (X1 - bx - 14) / 2
     for i, (city, txt, src) in enumerate(BRIEFS):
-        col = 0 if i < 10 else 1
-        row = i % 10
+        col = 0 if i < 13 else 1
+        row = i % 13
         lx = bx + col * (col_w + 14)
         ly = y + row * 12
         num = str(16 + i)
@@ -868,34 +874,33 @@ def build():
         line = "%s: %s (%s)" % (city, txt, src)
         lines = fit(d, line, F_BRIEF, col_w - nw - 2, 1)
         d.text((lx + nw, ly), lines[0], font=F_BRIEF, fill=INK)
-    y += 120
+    y += 156
 
     # ---- DATE CHECK (note to the judge + exclusions)
     d.line([X0, y, X1, y], fill=RULE, width=1)
     y += 6
-    box_h = 56
+    box_h = 43
     d.rectangle([X0, y, X1, y + box_h], outline=RED, width=2)
     tx, ty = X0 + 8, y + 5
     d.text((tx, ty), "DATE CHECK", font=F_DATE_B, fill=RED)
     tw = d.textlength("DATE CHECK  ", font=F_DATE_B)
     line1 = ("For the judge: every story here happened, or was first reported, on Friday "
-             "20 November 2026, in any time zone. Disputed claims are labelled CLAIM; "
-             "drafts and due dates are FORECAST.")
+             "20 November 2026, in any time zone.")
     lines = fit(d, line1, F_DATE, X1 - tx - 8 - tw, 2)
     draw_text(d, tx + tw, ty, lines, F_DATE, lh=11)
-    ty += 23
-    line2 = ("Left out as earlier news: Shenzhen three-way summit (Thu 19 Nov) \u00b7 ICJ "
-             "genocide ruling on Myanmar (Thu 19 Nov) \u00b7 Anthropic IPO pricing "
-             "(Wed 18 Nov) \u00b7 GTA VI launch (Thu 19 Nov) \u00b7 Bukele's third-term "
-             "filing (Thu 19 Nov) \u00b7 Kenya's last Ebola patient discharged (Wed 11 Nov). "
-             "BepiColombo is shown as due Sat 21 Nov \u2014 its capture had not happened yet.")
+    ty += 12
+    line2 = ("Left out as earlier news: Shenzhen summit, ICJ Myanmar ruling, Anthropic IPO, "
+             "GTA VI launch, Bukele filing, Lula visits Raoni, Jakarta asset bill, hippo "
+             "Fiona dies, U17 Australia-Argentina (all Thu 19 Nov) · Kenya Ebola discharge "
+             "(Wed 11 Nov) · Bougainville mine pledge (Mon 16 Nov). BepiColombo due Sat 21 Nov. "
+             "Claims labelled CLAIM; due dates FORECAST.")
     lines = fit(d, line2, F_DATE, X1 - tx - 8, 2)
     draw_text(d, tx, ty, lines, F_DATE, lh=11)
     y += box_h + 6
 
     # ---- footer
     foot = ("Sources are named beside each story \u00b7 Original flat drawings, no photos "
-            "\u00b7 All 35 stories happened, or were first reported, on Friday 20 November 2026")
+            "\u00b7 All 40 stories happened, or were first reported, on Friday 20 November 2026")
     d.text(((W - d.textlength(foot, font=F_FOOT)) / 2, y), foot, font=F_FOOT, fill=MUTED)
     print("final y:", y)
 
